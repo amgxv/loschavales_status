@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>{% if server_name %}{{server_name}}{% endif %} - Status</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img class="rounded float-left mr-3" src="{{ favicon }}" />
+                    </div>
+                    <div class="col align-self-center">
+                        <h4>{% if server_name %}{{server_name}}{% endif %}</h4>
+                        {% if version %}{{ version }}{% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">                
+                <div class="col align-self-center">
+                    {% if player_data %}
+                    {% for x in player_data %}
+                    <div class="row mt-2 mb-2">
+                        <img style="width: 32px" class="rounded float-left mr-3" src="https://mineskin.de/avatar/{{ x.name }}">{{ x.name }}
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger" role="alert">
+                        No hay chavales conectados
+                    </div>                        
+                    {% endfor %}
+                    {% endif %}
+                </div>        
+            </div>
+            {% if player_data %}
+            <div class="card-footer text-muted">    
+                <b>Chavales online</b> : {{online_players}}/{{max_players}}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
