@@ -8,9 +8,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm-1">
-                        <img class="rounded float-left mr-3" src="{{ favicon }}" />
-                    </div>
+                        <img class="rounded float-left ml-2" src="{{ favicon }}" />
                     <div class="col align-self-center">
                         <h4>{% if server_name %}{{server_name}}{% endif %}</h4>
                         {% if version %}{{ version }}{% endif %}
@@ -22,7 +20,7 @@
                     {% if player_data %}
                     {% for x in player_data %}
                     <div class="row mt-2 mb-2">
-                        <img style="width: 32px" class="rounded float-left mr-3" src="https://mineskin.de/avatar/{{ x.name }}">{{ x.name }}
+                        <img style="width: 32px; height:32px" class="rounded float-left mr-3" src="https://mineskin.de/avatar/{{ x.name }}">{{ x.name }}
                     </div>
                     {% else %}
                     <div class="alert alert-danger" role="alert">
