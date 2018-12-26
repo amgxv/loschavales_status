@@ -22,17 +22,17 @@
                     <div class="row mt-2 mb-2">
                         <img style="width: 32px; height:32px" class="rounded float-left mr-3" src="https://mineskin.de/avatar/{{ x.name }}">{{ x.name }}
                     </div>
+                    {% endfor %}
                     {% else %}
                     <div class="alert alert-danger" role="alert">
                         No hay chavales conectados
                     </div>                        
-                    {% endfor %}
                     {% endif %}
                 </div>        
             </div>
-            {% if player_data %}
+            {% if max_players %}
             <div class="card-footer text-muted">    
-                <b>Chavales online</b> : {{online_players}}/{{max_players}}
+                <b>Chavales online</b> : {% if online_players %}{{online_players}}{% else %}0{% endif %}/{% if max_players %}{{max_players}}{% endif %}
             </div>
             {% endif %}
         </div>

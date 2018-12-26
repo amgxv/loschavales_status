@@ -10,14 +10,18 @@ def status():
         query = 'https://api.mcsrvstat.us/ping/' + os.getenv('SERVER', 'localhost')
         r = requests.get(query)
         j = json.loads(r.text)
-
+    
         server_name = j["description"]["text"]
         online_players = j["players"]["online"]
         max_players = j["players"]["max"]
-        player_data = j["players"]["sample"]
         version = j["version"]["name"]
         favicon = j["favicon"]
-
+    
+        if online_players >= 1:
+            player_data = j["players"]["sample"]
+        else:
+            player_data = None
+    
         return render_template('data.html', 
             server_name = server_name,
             online_players = online_players,
